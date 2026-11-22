@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore fun, creative 3D printed products from Michael 3D Printing.">
+  <title>Michael 3D Printing | Made Layer by Layer</title>
+  <style>
+    :root {
+      --bg: #080b16; --panel: #11182b; --panel2: #151f36;
+      --cyan: #53e7f2; --violet: #9a7bff; --text: #f4f7ff;
+      --muted: #aab5ce; --line: rgba(151,177,220,.18);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      background:
+        radial-gradient(ellipse at 80% 0%, rgba(83,231,242,.13), transparent 34rem),
+        radial-gradient(ellipse at 10% 18%, rgba(154,123,255,.16), transparent 30rem),
+        var(--bg);
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: auto; }
+    header { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(16px); background: rgba(8,11,22,.82); border-bottom: 1px solid var(--line); }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 850; letter-spacing: -.04em; font-size: 1.12rem; }
+    .brand span { color: var(--cyan); }
+    .navlinks { display: flex; gap: 24px; color: var(--muted); font-size: .94rem; }
+    .navlinks a:hover { color: var(--cyan); }
+    .cart-pill { border: 1px solid rgba(83,231,242,.45); border-radius: 999px; padding: 9px 14px; color: var(--cyan); font-weight: 700; font-size: .9rem; }
+    .hero { padding: 88px 0 72px; display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 44px; }
+    .eyebrow { color: var(--cyan); text-transform: uppercase; letter-spacing: .17em; font-size: .75rem; font-weight: 800; }
+    h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); line-height: .98; letter-spacing: -.065em; margin: 16px 0 22px; }
+    h1 em { color: var(--cyan); font-style: normal; }
+    .lead { color: var(--muted); font-size: 1.12rem; line-height: 1.75; max-width: 610px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 13px 19px; border-radius: 12px; font-weight: 800; border: 1px solid var(--line); cursor: pointer; transition: transform .2s, box-shadow .2s; font: inherit; }
+    .btn:hover { transform: translateY(-2px); }
+    .primary { color: #061018; background: linear-gradient(110deg, var(--cyan), #9bf4df); border: 0; box-shadow: 0 8px 28px rgba(83,231,242,.18); }
+    .secondary { background: rgba(255,255,255,.04); color: var(--text); }
+    .hero-art { min-height: 340px; border: 1px solid rgba(83,231,242,.25); border-radius: 28px; background: linear-gradient(145deg, rgba(83,231,242,.12), rgba(154,123,255,.13)), #10182a; display: grid; place-items: center; position: relative; overflow: hidden; box-shadow: 0 25px 80px rgba(0,0,0,.25); }
+    .hero-art:before, .hero-art:after { content: ""; position: absolute; border: 1px solid rgba(83,231,242,.22); border-radius: 50%; width: 290px; height: 290px; }
+    .hero-art:after { width: 390px; height: 390px; border-color: rgba(154,123,255,.2); }
+    .orb { z-index: 1; width: 190px; height: 190px; border-radius: 35% 65% 60% 40%; transform: rotate(-18deg); background: linear-gradient(135deg, #5af0ee, #7e75ff 75%); box-shadow: 0 0 70px rgba(83,231,242,.35), inset -18px -20px 35px rgba(30,35,100,.35); display: grid; place-items: center; font-size: 5.5rem; }
+    section { padding: 58px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 26px; }
+    h2 { margin: 8px 0 0; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.05em; }
+    .section-head p { color: var(--muted); max-width: 440px; line-height: 1.6; margin: 0; }
+    .products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .product { border: 1px solid var(--line); background: linear-gradient(160deg, rgba(21,31,54,.96), rgba(12,18,33,.96)); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; min-height: 330px; }
+    .product-art { height: 155px; border-radius: 14px; display: grid; place-items: center; font-size: 4.7rem; background: radial-gradient(circle at 50% 35%, rgba(83,231,242,.19), rgba(154,123,255,.09) 65%, rgba(255,255,255,.025)); border: 1px solid rgba(255,255,255,.06); }
+    .product h3 { margin: 17px 0 6px; font-size: 1.15rem; }
+    .product p { color: var(--muted); line-height: 1.55; font-size: .92rem; margin: 0 0 16px; }
+    .product-bottom { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: auto; }
+    .price { font-weight: 850; color: var(--cyan); }
+    .small-btn { padding: 9px 12px; border-radius: 10px; background: rgba(83,231,242,.1); border: 1px solid rgba(83,231,242,.35); color: var(--cyan); font-weight: 750; cursor: pointer; }
+    .how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .step { padding: 22px; border-radius: 18px; border: 1px solid var(--line); background: rgba(17,24,43,.7); }
+    .step b { color: var(--cyan); font-size: .8rem; letter-spacing: .12em; }
+    .step h3 { margin: 12px 0 8px; }
+    .step p { color: var(--muted); line-height: 1.6; margin: 0; }
+    .contact { border: 1px solid rgba(83,231,242,.25); background: linear-gradient(120deg, rgba(83,231,242,.09), rgba(154,123,255,.1)); border-radius: 24px; padding: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+    .contact p { color: var(--muted); line-height: 1.65; }
+    label { display: block; font-size: .88rem; color: var(--muted); margin: 12px 0 6px; }
+    input, textarea { width: 100%; padding: 12px 13px; border-radius: 10px; border: 1px solid var(--line); color: var(--text); background: rgba(5,9,18,.65); font: inherit; }
+    textarea { min-height: 100px; resize: vertical; }
+    .note { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+    footer { border-top: 1px solid var(--line); color: var(--muted); padding: 25px 0; font-size: .86rem; }
+    .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #17243a; border: 1px solid rgba(83,231,242,.4); padding: 12px 18px; border-radius: 12px; box-shadow: 0 10px 35px #0008; display: none; z-index: 20; }
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; padding-top: 60px; }
+      .hero-art { min-height: 260px; }
+      .products, .how { grid-template-columns: 1fr; }
+      .contact { grid-template-columns: 1fr; }
+      .navlinks { display: none; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top">MICHAEL <span>3D PRINTING</span></a>
+      <div class="navlinks"><a href="#products">Products</a><a href="#pricing">Our pricing</a><a href="#how">How it works</a><a href="#contact">Custom orders</a></div>
+      <a class="cart-pill" href="#contact">Quote list: <span id="count">0</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <div class="eyebrow">Creative ideas · Printed layer by layer</div>
+      <h1>Small ideas.<br><em>Big creations.</em></h1>
+      <p class="lead">Welcome to Michael 3D Printing — a place for fun, creative, and customizable 3D printed products. Find something you like or ask about a custom design.</p>
+      <div class="actions"><a class="btn primary" href="#products">Explore products</a><a class="btn secondary" href="#contact">Request a custom print</a></div>
+    </div>
+    <div class="hero-art" aria-label="Decorative 3D-inspired graphic"><div class="orb">⬡</div></div>
+  </div>
+
+  <section id="products">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">The collection</div><h2>Featured prints</h2></div>
+        <p>These are sample listings. Choose a print to add it to your quote list, then send a request below.</p>
+      </div>
+      <div class="products">
+        <article class="product">
+          <div class="product-art">🐉</div><h3>Fidget Dragon</h3>
+          <p>A fun, flexible dragon with movable sections. Colors and sizes may vary.</p>
+          <div class="product-bottom"><span class="price">From $5</span><button class="small-btn" onclick="addItem('Fidget Dragon')">Add to quote +</button></div>
+        </article>
+        <article class="product">
+          <div class="product-art">🐍</div><h3>Flexi Creature</h3>
+          <p>A bendy desk companion with a playful articulated design.</p>
+          <div class="product-bottom"><span class="price">From $4</span><button class="small-btn" onclick="addItem('Flexi Creature')">Add to quote +</button></div>
+        </article>
+        <article class="product">
+          <div class="product-art">🔑</div><h3>Custom Keychain</h3>
+          <p>A small personalized design for a backpack, keys, or gift.</p>
+          <div class="product-bottom"><span class="price">From $3</span><button class="small-btn" onclick="addItem('Custom Keychain')">Add to quote +</button></div>
+        </article>
+      </div>
+      <p class="note" style="margin-top:16px">Prices are starting estimates, not final quotes. Final pricing depends on size, material, print time, and design details. Confirm the price before placing an order.</p>
+    </div>
+  </section>
+
+
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">Fair prices · Creative prints</div><h2>Affordable 3D printing</h2></div>
+      </div>
+      <div class="step" style="padding:28px">
+        <h3 style="font-size:1.35rem;margin-top:0">At Michael's 3D Printing</h3>
+        <p>At Michael's 3D Printing, we believe everyone should be able to enjoy the creativity of 3D printing without spending too much money. Our prices are based on the amount of filament, printing time, and work that goes into making each item.</p>
+        <p>Even though filament can be inexpensive, every print takes time, creativity, and effort. That's why we keep our prices fair and affordable while making sure every customer gets something they're happy with.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">Simple process</div><h2>How it works</h2></div></div>
+      <div class="how">
+        <div class="step"><b>01 / PICK</b><h3>Choose a print</h3><p>Browse the featured products and add anything you are interested in to your quote list.</p></div>
+        <div class="step"><b>02 / CUSTOMIZE</b><h3>Make it yours</h3><p>Tell us the color, size, or idea you have in mind. Custom requests are welcome.</p></div>
+        <div class="step"><b>03 / CONFIRM</b><h3>Approve the price</h3><p>We'll confirm the details, timing, and total price before the print is made.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <div class="eyebrow">Have an idea?</div><h2>Let's print it.</h2>
+          <p>Use this form to prepare an order request. Add the product you're interested in, describe any custom details, and include a way for the seller to reply.</p>
+          <p class="note">This starter website does not take payments or automatically send orders. The form opens an email draft after you add your contact email below.</p>
+        </div>
+        <form id="orderForm">
+          <label for="reply">Your email (so the seller can reply)</label><input id="reply" type="email" placeholder="you@example.com" required>
+          <label for="items">Products / quote list</label><input id="items" type="text" placeholder="Choose products above or type here">
+          <label for="details">Color, size, quantity, or custom idea</label><textarea id="details" placeholder="Tell us what you'd like..."></textarea>
+          <label for="seller">Seller's contact email</label><input id="seller" type="email" value="mryurkevich2031@rsu14.org" required>
+          <button class="btn primary" type="submit" style="width:100%;margin-top:16px">Prepare order email</button>
+          <p class="note">For privacy, only share the details needed to discuss your order. Don't enter home addresses or other sensitive information in this form.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">© <span id="year"></span> Michael 3D Printing · Made layer by layer.</div></footer>
+<div class="toast" id="toast" role="status">Added to your quote list!</div>
+<script>
+  const chosen = [];
+  function addItem(name) {
+    chosen.push(name);
+    document.getElementById('count').textContent = chosen.length;
+    document.getElementById('items').value = chosen.join(', ');
+    const toast = document.getElementById('toast');
+    toast.textContent = name + ' added to your quote list!';
+    toast.style.display = 'block';
+    clearTimeout(window.toastTimer);
+    window.toastTimer = setTimeout(() => toast.style.display = 'none', 2200);
+  }
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('orderForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const reply = document.getElementById('reply').value.trim();
+    const seller = document.getElementById('seller').value.trim();
+    const items = document.getElementById('items').value.trim() || 'Not specified';
+    const details = document.getElementById('details').value.trim() || 'No extra details';
+    const subject = encodeURIComponent('3D Printing Order Request');
+    const body = encodeURIComponent('Hello! I am interested in a 3D print.\\n\\nProducts: ' + items + '\\nDetails: ' + details + '\\nMy reply email: ' + reply + '\\n\\nPlease let me know the price and details before starting.');
+    window.location.href = 'mailto:' + seller + '?subject=' + subject + '&body=' + body;
+  });
+</script>
+</body>
+</html>
